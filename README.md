@@ -205,7 +205,7 @@ Completá todos los endpoints del backend con los metodos disponibles, los heade
         "method": "post",
         "request_headers": "application/json",
         "response_code": 200,
-        "payload": { name: "Example", description: "Example", type: 0 }
+        "payload": { name: "Example", description: "Example", type: 0 },
         "request_response": {"id":28,"name":"Example","description":"Example","state":0,"type":0},
     }
     ```
@@ -218,7 +218,7 @@ Completá todos los endpoints del backend con los metodos disponibles, los heade
         "method": "put",
         "request_headers": "application/json",
         "response_code": 200,
-        "payload": { id: 28, name: "Example Two", description: "Example Two", type: 0, state: 0 }
+        "payload": { id: 28, name: "Example Two", description: "Example Two", type: 0, state: 0 },
         "request_response": {"id":28,"name":"Example Two","description":"Example Two","state":0,"type":0},
     }
     ```
