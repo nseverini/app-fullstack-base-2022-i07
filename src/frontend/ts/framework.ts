@@ -1,38 +1,54 @@
-class Framework{
+class Framework {
+  public executeRequest(
+    method: string,
+    url: string,
+    responseHandler: HandlerResponse,
+    data?: any
+  ): void {
+    this.showSpinner();
 
-  public ejecutarRequest(metodo: string, url: string, responseHandler:HandleResponse, data?: any) {
-    let xmlHttp = new XMLHttpRequest();
-    
+    const xmlHttp = new XMLHttpRequest();
+
     xmlHttp.onreadystatechange = () => {
       if (xmlHttp.readyState == 4) {
-          
-            if (xmlHttp.status == 200) {
-              let listaDisp: Array<Device> = JSON.parse(xmlHttp.responseText);
-              responseHandler.cargarGrilla(listaDisp);
-               
-            } else {
-                alert("ERROR en la consulta");
-            }
-            
+        if (xmlHttp.status == 200) {
+          if (method == "GET") {
+            const devices: Array<Device> = JSON.parse(xmlHttp.responseText);
+            responseHandler.loadDevices(devices);
+          } else if (method == "POST") {
+            const device: Device = JSON.parse(xmlHttp.responseText);
+            responseHandler.addDevice(device);
+          } else if (method == "PUT") {
+            const device: Device = JSON.parse(xmlHttp.responseText);
+            responseHandler.updateDevice(device);
+          } else if (method == "DELETE") {
+            const id: number = Number(JSON.parse(xmlHttp.responseText));
+            responseHandler.removeDevice(id);
+          }
+        } else {
+          responseHandler.showError("Error in request");
         }
-        }
-    xmlHttp.open(metodo, url, true);
-    if (data != undefined) {
-      xmlHttp.setRequestHeader("Content-Type", "application/json");  
-      xmlHttp.send(JSON.stringify(data));
 
+        this.hideSpinner();
+      }
+    };
+    xmlHttp.open(method, url, true);
+
+    if (data != undefined) {
+      xmlHttp.setRequestHeader("Content-Type", "application/json");
+      xmlHttp.send(JSON.stringify(data));
     } else {
-      
       xmlHttp.send();
     }
   }
 
-  public mostrarCargando() {
-    let imgLoading = document.getElementById("loading");
-    imgLoading.hidden = false;
+  private showSpinner(): void {
+    let spinner = document.getElementById("spinner");
+    spinner.classList.add("active");
   }
-  public ocultarCargando() {
-    let imgLoading = document.getElementById("loading");
-    imgLoading.hidden = true;
+
+  private hideSpinner(): void {
+    let spinner = document.getElementById("spinner");
+    spinner.classList.remove("active");
   }
 }
