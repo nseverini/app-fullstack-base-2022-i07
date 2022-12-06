@@ -174,7 +174,7 @@ La aplicación soporta 7 tipos de dispositivos:
     
     6- Toma corriente
 
-Los dispositivos del tipo 1,2 y 5 poseen un slider para encenderlos y establecer su valor de estado exacto, mientras que el resto de los dispositivos poseen un switch para encenderlos o apagarlos.  
+Los dispositivos del tipo 1, 2 y 5 poseen un slider para encenderlos y establecer su valor de estado exacto, mientras que el resto de los dispositivos poseen un switch para encenderlos o apagarlos.  
     
 ### Agregar un dispositivo
     
@@ -194,7 +194,7 @@ Una vez completados los datos, se debe hacer click en el botón que tiene la ley
     
 ![image](https://user-images.githubusercontent.com/46693419/206024042-8cf05b09-7b8e-4000-abaa-1b67c1c3708c.png)
     
-Se debe recalcar que todos los datos del formulario son obligatorios, en caso de no completarlos se indicara un mensaje de error por medio de un toast. Imagen de referencia: 
+Se debe recalcar que todos los datos del formulario son obligatorios, en caso de no completarlos se indicará un mensaje de error por medio de un toast. Imagen de referencia: 
     
 ![image](https://user-images.githubusercontent.com/46693419/206023963-2580c81f-7570-40df-b528-421186bb5a99.png)
     
