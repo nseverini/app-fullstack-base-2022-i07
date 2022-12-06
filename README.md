@@ -203,11 +203,17 @@ Se debe recalcar que todos los datos del formulario son obligatorios, en caso de
 El frontend fue desarrollado con TypeScript.
 
 La aplicación posee 4 funcionalidades básicas:
+    
     1- Crear un nuevo dispositivo: Esta funcionalidad se realiza mediante el modal que se abre al hacer click en el botón con la leyenda "Add new device".
-    2- Editar un dispositivo específico: Esta funcionalidad se realiza mediante el modal que se abre al hacer click en el boton con la leyenda "Update" de alguno de los dispositivos creados.
+    
+    2- Editar un dispositivo específico: Esta funcionalidad se realiza mediante el modal que se abre al hacer click en el boton con la leyenda "Update" de alguno de          los dispositivos creados. Otra forma de editar un dispositivo es mediante el toggle de su switch o el deslizamiento de su slider dependiendo de que tipo de            dispositivo sea.
+    
     3- Eliminar un dispositivo específico: Esta funcionalidad se realiza al hacer click en el botón con la leyenda "Delete" de alguno de los dispositivos creados.
-    4- Listar todos los dispositivos creados: Esta funcionalidad se realiza cuando el usuario ingresa a la aplicación.
-   
+    
+    4- Listar todos los dispositivos creados: Esta funcionalidad se realiza cuando el usuario ingresa a la aplicación. Cada dispositivo posee su card que contiene sus        datos (incluyendo un icono que indica el tipo de dispositivo), a su vez también contiene un boton de eliminar y otro de modificar.
+
+Las validaciones de los datos de los dispositivos para la funcionalidad 1 y 2 se realiza tanto en el frontend como en el backend.    
+    
 Se debe recalcar que al ejecutar cada una de estas funcionalidades internamente el frontend estará realizando llamadas HTTP al backend para poder obtener el resultado esperado.
    
 A su vez al ejecutar las funcionalidades 1, 2 o 3 se emitirá un toast para informar al usuario si la operación tuvo éxito o fallo. Mientras que para la funcionalidad 4 se emitirá un toast si la operación falla.
