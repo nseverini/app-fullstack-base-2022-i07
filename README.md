@@ -155,43 +155,167 @@ En la siguiente ilustración podés ver cómo está organizado el proyecto para 
 En esta sección podés ver los detalles específicos de funcionamiento del código y que son los siguientes.
 
 <details><summary><b>Mira los detalles de implementación</b></summary><br>
+    
+### Tipos de dispositivos
 
+La aplicación soporta 7 tipos de dispositivos:
+    
+    0- Luces
+    
+    1- Ventanas/persianas
+    
+    2- Ventiladores
+    
+    3- TV's
+    
+    4- Dispositivos de audio
+    
+    5- Aires acondicionados
+    
+    6- Toma corriente
+
+Los dispositivos del tipo 1, 2 y 5 poseen un slider para encenderlos y establecer su valor de estado exacto, mientras que el resto de los dispositivos poseen un switch para encenderlos o apagarlos.  
+    
 ### Agregar un dispositivo
+    
+Para agregar un dispositivo desde el cliente web se debe acceder a la aplicación mediante la URL: http://localhost:8000/.
 
-Completá los pasos para agregar un dispositivo desde el cliente web.
+Una vez allí, se podrá observar el listado de dispositivos creados. Imagen de referencia:
+    
+![image](https://user-images.githubusercontent.com/46693419/206023132-1929bed9-5f91-4d76-863a-0cea4d32cf28.png)
+    
+Desde esta pantalla, se debe hacer click en el botón que tiene la leyenda "Add new device". Esta acción abrirá un modal con los datos a completar para la creación de un nuevo dispositivo. Imagen de referencia:
+    
+![image](https://user-images.githubusercontent.com/46693419/206023424-2f78c74e-10cd-4a63-9bd4-e521d4a2fa16.png)
 
+Una vez completados los datos, se debe hacer click en el botón que tiene la leyenda "Create". Imágenes de referencia:
+    
+![image](https://user-images.githubusercontent.com/46693419/206023894-5a8ac7ab-da28-4d4b-a6d6-057f77f1fd44.png)
+    
+![image](https://user-images.githubusercontent.com/46693419/206024042-8cf05b09-7b8e-4000-abaa-1b67c1c3708c.png)
+    
+Se debe recalcar que todos los datos del formulario son obligatorios, en caso de no completarlos se indicará un mensaje de error por medio de un toast. Imagen de referencia: 
+    
+![image](https://user-images.githubusercontent.com/46693419/206023963-2580c81f-7570-40df-b528-421186bb5a99.png)
+    
 ### Frontend
 
-Completá todos los detalles sobre cómo armaste el frontend, sus interacciones, etc.
+El frontend fue desarrollado con TypeScript.
 
+La aplicación posee 4 funcionalidades básicas:
+    
+    1- Crear un nuevo dispositivo: Esta funcionalidad se realiza mediante el modal que se abre al hacer click en el botón con la leyenda "Add new device".
+    
+    2- Editar un dispositivo específico: Esta funcionalidad se realiza mediante el modal que se abre al hacer click en el boton con la leyenda "Update" de alguno de          los dispositivos creados. Otra forma de editar un dispositivo es mediante el toggle de su switch o el deslizamiento de su slider dependiendo de que tipo de            dispositivo sea.
+    
+    3- Eliminar un dispositivo específico: Esta funcionalidad se realiza al hacer click en el botón con la leyenda "Delete" de alguno de los dispositivos creados.
+    
+    4- Listar todos los dispositivos creados: Esta funcionalidad se realiza cuando el usuario ingresa a la aplicación. Cada dispositivo posee su card que contiene sus        datos (incluyendo un icono que indica el tipo de dispositivo), a su vez también contiene un boton de eliminar y otro de modificar.
+
+Las validaciones de los datos de los dispositivos para la funcionalidad 1 y 2 se realiza tanto en el frontend como en el backend.    
+    
+Se debe recalcar que al ejecutar cada una de estas funcionalidades internamente el frontend estará realizando llamadas HTTP al backend para poder obtener el resultado esperado.
+   
+A su vez al ejecutar las funcionalidades 1, 2 o 3 se emitirá un toast para informar al usuario si la operación tuvo éxito o fallo. Mientras que para la funcionalidad 4 se emitirá un toast si la operación falla.
+    
 ### Backend
 
-Completá todos los detalles de funcionamiento sobre el backend, sus interacciones con el cliente web, la base de datos, etc.
-
+Las tecnologías utilizadas para el desarrollo del backend son NodeJS utilizando ExpressJS y MySQL.
+    
+La API se crea en el archivo "index.js", el cual se encuentra en la raíz de la carpeta "backend".
+Los endpoints de los dispositivos están definidos en un archivo separado, el cual está en la ruta "routes/devices.routes.js". Este archivo es importado en el "index.js" para crear los endpoints correspondientes.
+    
+Por otra parte, se creó un archivo en la ruta "misc/utils.js" para colocar las validaciones a los datos de los dispositivos para los endpoints POST y PUT. 
+ 
 <details><summary><b>Ver los endpoints disponibles</b></summary><br>
 
-Completá todos los endpoints del backend con los metodos disponibles, los headers y body que recibe, lo que devuelve, ejemplos, etc.
-
-1) Devolver el estado de los dispositivos.
-
-```json
-{
-    "method": "get",
-    "request_headers": "application/json",
-    "request_body": "",
-    "response_code": 200,
-    "request_body": {
-        "devices": [
-            {
-                "id": 1,
-                "status": true,
-                "description": "Kitchen light"
-            }
-        ]
-    },
-}
-``` 
-
+1) Endpoint para obtener todos los dispositivos.
+    
+    URL: http://localhost:8000/api/devices
+    
+    ```json
+    {
+        "method": "get",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "request_response": [
+                {"id":6,"name":"Persiana 3","description":"Persiana balcon","state":73,"type":1},
+                {"id":25,"name":"bc","description":"b","state":1,"type":0},                           
+                {"id":26,"name":"w","description":"w","state":0,"type":0}
+         ]
+    }
+    ```
+    
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle el status code de respuesta será 500. 
+    
+2) Endpoint para obtener un dispositivo específico a partir de su id.
+    
+    URL: http://localhost:8000/api/devices/:id
+    
+    Ejemplo: http://localhost:8000/api/devices/6
+    
+    ```json
+    {
+        "method": "get",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "request_response": { "id":6,"name":"Persiana 3","description":"Persiana balcon","state":73,"type":1 },
+    }
+    ```
+    
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. En caso de fallar por algun otro motivo, su status code de respuesta será 500.
+    
+3) Endpoint para crear un nuevo dispositivo.
+    
+    URL: http://localhost:8000/api/devices
+    
+    ```json
+    {
+        "method": "post",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "payload": { name: "Example", description: "Example", type: 0 },
+        "request_response": {"id":28,"name":"Example","description":"Example","state":0,"type":0},
+    }
+    ```
+    
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. Si la validación de los datos del dispositivo falla, el status code de respuesta sera 400. En caso de fallar por algun otro motivo, su status code de             respuesta será 500.  
+    
+4) Endpoint para modificar un dispositivo específico a partir de su id.
+    
+    URL: http://localhost:8000/api/devices/:id
+    
+    Ejemplo: http://localhost:8000/api/devices/28
+    
+    ```json
+    {
+        "method": "put",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "payload": { id: 28, name: "Example Two", description: "Example Two", type: 0, state: 0 },
+        "request_response": {"id":28,"name":"Example Two","description":"Example Two","state":0,"type":0},
+    }
+    ```
+    
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. Si la validación de los datos del dispositivo falla, el status code de respuesta sera 400. En caso de fallar por algun otro motivo, su status code de             respuesta será 500. 
+    
+5) Endpoint para eliminar un dispositivo específico a partir de su id.
+    
+    URL: http://localhost:8000/api/devices/:id
+    
+    Ejemplo: http://localhost:8000/api/devices/27
+    
+    ```json
+    {
+        "method": "delete",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "request_response": "27",
+    }
+    ```
+    
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. En caso de fallar por algun otro motivo, su status code de respuesta será 500.  
+    
 </details>
 
 </details>
@@ -227,7 +351,7 @@ Goto IoT es una plataforma que publica material y proyectos de código abierto b
 * **[Twitter de Goto IoT:](https://twitter.com/gotoiot)** Donde se publican las novedades del sitio y temas relacionados con IoT.
 * **[Wiki de Goto IoT:](https://github.com/gotoiot/doc/wiki)** Donde hay información de desarrollo complementaria para ampliar el contexto.
 
-## Muestas de agradecimiento 🎁
+## Muestras de agradecimiento 🎁
 
 Si te gustó este proyecto y quisieras apoyarlo, cualquiera de estas acciones estaría más que bien para nosotros:
 
