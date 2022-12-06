@@ -157,9 +157,27 @@ En esta sección podés ver los detalles específicos de funcionamiento del cód
 <details><summary><b>Mira los detalles de implementación</b></summary><br>
 
 ### Agregar un dispositivo
+    
+Para agregar un dispositivo desde el cliente web se debe acceder a la aplicación mediante la URL: http://localhost:8000/.
 
-Completá los pasos para agregar un dispositivo desde el cliente web.
+Una vez allí, se podra observar el listado de dispositivos creados. Imagen de referencia:
+    
+![image](https://user-images.githubusercontent.com/46693419/206023132-1929bed9-5f91-4d76-863a-0cea4d32cf28.png)
+    
+Desde esta pantalla, se debe hacer click en el boton que tiene la leyenda "Add new device". Esta acción abrira un modal con los datos a completar para la creación de un nuevo dispositivo. Imagen de referencia: 
+    
+![image](https://user-images.githubusercontent.com/46693419/206023424-2f78c74e-10cd-4a63-9bd4-e521d4a2fa16.png)
 
+Una vez completados los datos, se debe hacer click en el que tiene la leyenda "Create". Imagenes de referencia:
+    
+![image](https://user-images.githubusercontent.com/46693419/206023894-5a8ac7ab-da28-4d4b-a6d6-057f77f1fd44.png)
+    
+![image](https://user-images.githubusercontent.com/46693419/206024042-8cf05b09-7b8e-4000-abaa-1b67c1c3708c.png)
+    
+Se debe recalcar que todos los datos del formulario son obligatorios, en caso de no completarlos se indicara un mensaje de error por medio de un toast. Imagen de referencia:    
+    
+![image](https://user-images.githubusercontent.com/46693419/206023963-2580c81f-7570-40df-b528-421186bb5a99.png)
+    
 ### Frontend
 
 Completá todos los detalles sobre cómo armaste el frontend, sus interacciones, etc.
