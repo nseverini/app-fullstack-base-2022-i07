@@ -176,6 +176,7 @@ Por otra parte, se creó un archivo en la ruta "misc/utils.js" para colocar las 
 <details><summary><b>Ver los endpoints disponibles</b></summary><br>
 
 1) Endpoint para obtener todos los dispositivos.
+    
     URL: http://localhost:8000/api/devices
     
     ```json
@@ -194,7 +195,9 @@ Por otra parte, se creó un archivo en la ruta "misc/utils.js" para colocar las 
     El status code de respuesta en caso de éxito será 200. En caso de que la operación falle el status code de respuesta será 500. 
     
 2) Endpoint para obtener un dispositivo específico a partir de su id.
+    
     URL: http://localhost:8000/api/devices/:id
+    
     Ejemplo: http://localhost:8000/api/devices/6
     
     ```json
@@ -209,6 +212,7 @@ Por otra parte, se creó un archivo en la ruta "misc/utils.js" para colocar las 
     El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. En caso de fallar por algun otro motivo, su status code de respuesta será 500.
     
 3) Endpoint para crear un nuevo dispositivo.
+    
     URL: http://localhost:8000/api/devices
     
     ```json
@@ -224,7 +228,9 @@ Por otra parte, se creó un archivo en la ruta "misc/utils.js" para colocar las 
     El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. Si la validación de los datos del dispositivo falla, el status code de respuesta sera 400. En caso de fallar por algun otro motivo, su status code de             respuesta será 500.  
     
 4) Endpoint para modificar un dispositivo específico a partir de su id.
+    
     URL: http://localhost:8000/api/devices/:id
+    
     Ejemplo: http://localhost:8000/api/devices/28
     
     ```json
@@ -240,7 +246,9 @@ Por otra parte, se creó un archivo en la ruta "misc/utils.js" para colocar las 
     El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. Si la validación de los datos del dispositivo falla, el status code de respuesta sera 400. En caso de fallar por algun otro motivo, su status code de             respuesta será 500. 
     
 5) Endpoint para eliminar un dispositivo específico a partir de su id.
+    
     URL: http://localhost:8000/api/devices/:id
+    
     Ejemplo: http://localhost:8000/api/devices/27
     
     ```json
