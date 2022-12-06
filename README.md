@@ -155,7 +155,20 @@ En la siguiente ilustración podés ver cómo está organizado el proyecto para 
 En esta sección podés ver los detalles específicos de funcionamiento del código y que son los siguientes.
 
 <details><summary><b>Mira los detalles de implementación</b></summary><br>
+    
+### Tipos de dispositivos
 
+La aplicación soporta 7 tipos de dispositivos:
+    0- Luces
+    1- Ventanas/persianas
+    2- Ventiladores
+    3- TV's
+    4- Dispositivos de audio
+    5- Aires acondicionados
+    6- Toma corriente
+
+Los dispositivos del tipo 1,2 y 5 poseen un slider para encenderlos y establecer su valor de estado exacto, mientras que el resto de los dispositivos poseen un switch para encenderlos o apagarlos.  
+    
 ### Agregar un dispositivo
     
 Para agregar un dispositivo desde el cliente web se debe acceder a la aplicación mediante la URL: http://localhost:8000/.
@@ -180,8 +193,18 @@ Se debe recalcar que todos los datos del formulario son obligatorios, en caso de
     
 ### Frontend
 
-Completá todos los detalles sobre cómo armaste el frontend, sus interacciones, etc.
+El frontend fue desarrollado con TypeScript.
 
+La aplicación posee 4 funcionalidades básicas:
+    1- Crear un nuevo dispositivo: Esta funcionalidad se realiza mediante el modal que se abre al hacer click en el botón con la leyenda "Add new device".
+    2- Editar un dispositivo específico: Esta funcionalidad se realiza mediante el modal que se abre al hacer click en el boton con la leyenda "Update" de alguno de los dispositivos creados.
+    3- Eliminar un dispositivo específico: Esta funcionalidad se realiza al hacer click en el botón con la leyenda "Delete" de alguno de los dispositivos creados.
+    4- Listar todos los dispositivos creados: Esta funcionalidad se realiza cuando el usuario ingresa a la aplicación.
+   
+Se debe recalcar que al ejecutar cada una de estas funcionalidades internamente el frontend estará realizando llamadas HTTP al backend para poder obtener el resultado esperado.
+   
+A su vez al ejecutar las funcionalidades 1, 2 o 3 se emitirá un toast para informar al usuario si la operación tuvo éxito o fallo. Mientras que para la funcionalidad 4 se emitirá un toast si la operación falla.
+    
 ### Backend
 
 Las tecnologías utilizadas para el desarrollo del backend son NodeJS utilizando ExpressJS y MySQL.
