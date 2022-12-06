@@ -166,11 +166,13 @@ Completá todos los detalles sobre cómo armaste el frontend, sus interacciones,
 
 ### Backend
 
-Completá todos los detalles de funcionamiento sobre el backend, sus interacciones con el cliente web, la base de datos, etc.
-
+Las tecnologías utilizadas para el desarrollo del backend son NodeJS utilizando ExpressJS y MySQL.
+La API se crea en el archivo "index.js", el cual se encuentra en la raíz de la carpeta "backend".
+Los endpoints de los dispositivos están definidos en un archivo separado, el cual está en la ruta "routes/devices.routes.js". Este archivo es importado en el "index.js" para crear los endpoints correspondientes.
+Por otra parte, se creó un archivo en la ruta "misc/utils.js" para colocar las validaciones a los datos de los dispositivos para los endpoints POST y PUT. 
+ 
 <details><summary><b>Ver los endpoints disponibles</b></summary><br>
 
-Completá todos los endpoints del backend con los metodos disponibles, los headers y body que recibe, lo que devuelve, ejemplos, etc.
 1) Endpoint para obtener todos los dispositivos.
     URL: http://localhost:8000/api/devices
     ```json
