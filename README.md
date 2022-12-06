@@ -159,12 +159,19 @@ En esta sección podés ver los detalles específicos de funcionamiento del cód
 ### Tipos de dispositivos
 
 La aplicación soporta 7 tipos de dispositivos:
+    
     0- Luces
+    
     1- Ventanas/persianas
+    
     2- Ventiladores
+    
     3- TV's
+    
     4- Dispositivos de audio
+    
     5- Aires acondicionados
+    
     6- Toma corriente
 
 Los dispositivos del tipo 1,2 y 5 poseen un slider para encenderlos y establecer su valor de estado exacto, mientras que el resto de los dispositivos poseen un switch para encenderlos o apagarlos.  
