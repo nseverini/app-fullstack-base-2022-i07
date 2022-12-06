@@ -171,27 +171,71 @@ Completá todos los detalles de funcionamiento sobre el backend, sus interaccion
 <details><summary><b>Ver los endpoints disponibles</b></summary><br>
 
 Completá todos los endpoints del backend con los metodos disponibles, los headers y body que recibe, lo que devuelve, ejemplos, etc.
-
-1) Devolver el estado de los dispositivos.
-
-```json
-{
-    "method": "get",
-    "request_headers": "application/json",
-    "request_body": "",
-    "response_code": 200,
-    "request_body": {
-        "devices": [
-            {
-                "id": 1,
-                "status": true,
-                "description": "Kitchen light"
-            }
-        ]
-    },
-}
-``` 
-
+1) Endpoint para obtener todos los dispositivos.
+    URL: http://localhost:8000/api/devices
+    ```json
+    {
+        "method": "get",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "request_response": [
+                {"id":6,"name":"Persiana 3","description":"Persiana balcon","state":73,"type":1},
+                {"id":25,"name":"bc","description":"b","state":1,"type":0},                           
+                {"id":26,"name":"w","description":"w","state":0,"type":0}
+         ]
+    }
+    ```
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle el status code de respuesta será 500.  
+2) Endpoint para obtener un dispositivo específico a partir de su id.
+    URL: http://localhost:8000/api/devices/:id
+    Ejemplo: http://localhost:8000/api/devices/6
+    ```json
+    {
+        "method": "get",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "request_response": { "id":6,"name":"Persiana 3","description":"Persiana balcon","state":73,"type":1 },
+    }
+    ```
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. En caso de fallar por algun otro motivo, su status code de respuesta será 500.  
+3) Endpoint para crear un nuevo dispositivo.
+    URL: http://localhost:8000/api/devices
+    ```json
+    {
+        "method": "post",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "payload": { name: "Example", description: "Example", type: 0 }
+        "request_response": {"id":28,"name":"Example","description":"Example","state":0,"type":0},
+    }
+    ```
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. Si la validación de los datos del dispositivo falla, el status code de respuesta sera 400. En caso de fallar por algun otro motivo, su status code de             respuesta será 500.  
+4) Endpoint para modificar un dispositivo específico a partir de su id.
+    URL: http://localhost:8000/api/devices/:id
+    Ejemplo: http://localhost:8000/api/devices/28
+    ```json
+    {
+        "method": "put",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "payload": { id: 28, name: "Example Two", description: "Example Two", type: 0, state: 0 }
+        "request_response": {"id":28,"name":"Example Two","description":"Example Two","state":0,"type":0},
+    }
+    ```
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. Si la validación de los datos del dispositivo falla, el status code de respuesta sera 400. En caso de fallar por algun otro motivo, su status code de             respuesta será 500.  
+5) Endpoint para eliminar un dispositivo específico a partir de su id.
+    URL: http://localhost:8000/api/devices/:id
+    Ejemplo: http://localhost:8000/api/devices/27
+    ```json
+    {
+        "method": "delete",
+        "request_headers": "application/json",
+        "response_code": 200,
+        "request_response": "27",
+    }
+    ```
+    El status code de respuesta en caso de éxito será 200. En caso de que la operación falle debido a que el dispositivo no existe, el status code de respuesta será       404. En caso de fallar por algun otro motivo, su status code de respuesta será 500.  
+    
 </details>
 
 </details>
@@ -227,7 +271,7 @@ Goto IoT es una plataforma que publica material y proyectos de código abierto b
 * **[Twitter de Goto IoT:](https://twitter.com/gotoiot)** Donde se publican las novedades del sitio y temas relacionados con IoT.
 * **[Wiki de Goto IoT:](https://github.com/gotoiot/doc/wiki)** Donde hay información de desarrollo complementaria para ampliar el contexto.
 
-## Muestas de agradecimiento 🎁
+## Muestras de agradecimiento 🎁
 
 Si te gustó este proyecto y quisieras apoyarlo, cualquiera de estas acciones estaría más que bien para nosotros:
 
